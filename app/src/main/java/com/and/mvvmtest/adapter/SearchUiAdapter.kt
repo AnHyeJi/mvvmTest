@@ -9,29 +9,32 @@ import com.and.mvvmtest.R
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_gif.view.*
 
-class SearchUiAdapter(var arrData: ArrayList<String>) : RecyclerView.Adapter<SearchUiAdapter.viewHolder>() {
+class SearchUiAdapter : RecyclerView.Adapter<ViewHolder>() {
 
-    class viewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val img: ImageView = view.iv
+    private var arrData: ArrayList<String> = arrayListOf()
 
-
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
-        return viewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_gif, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_gif, parent, false))
     }
 
     override fun getItemCount(): Int {
         return arrData.size
     }
 
-    override fun onBindViewHolder(holder: viewHolder, position: Int) {
-        Glide.with(holder.img.context).load(arrData.get(position)).into(holder.img)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bindView(arrData[position])
     }
 
     fun setData(arrData: ArrayList<String>) {
         this.arrData = arrData
         notifyDataSetChanged()
     }
+}
 
+class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    private val img: ImageView = view.iv
+
+    fun bindView(data: String) {
+        Glide.with(itemView.context).load(data).into(img)
+    }
 }

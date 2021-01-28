@@ -5,10 +5,10 @@
 
         <variable
             name="myModel"
-            type="com.and.mvvmtest.viewModel.SearchViewModel" />
+            type="com.and.mvvmtest.ui.search.viewModel.SearchViewModel" />
         <variable
             name="mData"
-            type="com.and.mvvmtest.SearchActivity" />
+            type="com.and.mvvmtest.ui.search.SearchActivity" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -37,8 +37,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="56dp"
-            app:adapterData="@{myModel._searchData}"
+            app:adapterData="@{myModel.searchData}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit" />
 
