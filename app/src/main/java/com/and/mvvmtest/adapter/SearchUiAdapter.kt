@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.and.mvvmtest.R
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_gif.view.*
+import javax.inject.Inject
 
-class SearchUiAdapter : RecyclerView.Adapter<ViewHolder>() {
+class SearchUiAdapter @Inject constructor() : RecyclerView.Adapter<ViewHolder>() {
 
     private var arrData: ArrayList<String> = arrayListOf()
 

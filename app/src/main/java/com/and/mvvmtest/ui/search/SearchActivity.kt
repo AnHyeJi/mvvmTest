@@ -15,15 +15,16 @@ import com.example.apitestproject.network.RetrofitClient
 import kotlinx.android.synthetic.main.activity_search.*
 import rx.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
+import javax.inject.Named
 
 
 class SearchActivity : BaseActivity<ActivitySearchBinding>() {
 
     @Inject lateinit var factory: ViewModelProvider.Factory
     @Inject lateinit var searchAdapter: SearchUiAdapter
+    @Inject @Named("dataInput") lateinit var txtData: String
 
     private val viewModel by viewModels<SearchViewModel> { factory }
-    var txtData = ""
 
     override val layout: Int
         get() = R.layout.activity_search
@@ -31,7 +32,6 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-        txtData = "데이터 입력"
         binding.tv.text = txtData
 
         binding.apply {
@@ -39,9 +39,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
             recycle.adapter = searchAdapter
         }
 
-
         viewModel.setSearchData("")
-
         /*
          *  //1번 방식
          *         viewModel._searchData.observe(this, Observer<ArrayList<String>>{

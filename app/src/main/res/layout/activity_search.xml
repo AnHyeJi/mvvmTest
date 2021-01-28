@@ -29,7 +29,6 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_width="100dp"
             android:textColor="#ff00ff"
-            android:text="@{mData.txtData}"
             android:layout_height="wrap_content"/>
 
         <androidx.recyclerview.widget.RecyclerView
