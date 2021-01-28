@@ -19,12 +19,8 @@ import rx.android.schedulers.AndroidSchedulers
 
 class SearchActivity :AppCompatActivity() {
     private val retrofitClient = RetrofitClient.getInstance()
-    private var mSearchUiAdapter : SearchUiAdapter?= null
-
     lateinit var binding : ActivitySearchBinding
-    var liveData = MutableLiveData<String>()
     lateinit var viewModel : SearchViewModel
-    val gridLayoutManager: GridLayoutManager?  = null
     var txtData = ""
     override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -57,9 +53,6 @@ class SearchActivity :AppCompatActivity() {
         })
          */
 
-//        recycle.run {
-//            adapter = SearchUiAdapter(viewModel.searchData)
-//        }
 
         edit.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -93,49 +86,6 @@ class SearchActivity :AppCompatActivity() {
         })
 
 
-
-
-        /*
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_search)
-        mSearchUiAdapter = SearchUiAdapter(Common.getGifData())
-
-        val gridLayoutManager = GridLayoutManager(this, 2)
-        recycle.layoutManager = gridLayoutManager
-        recycle.adapter = mSearchUiAdapter
-
-
-        edit.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                Log.d("##afterTextChanged",s.toString())
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            Log.d("##addTextChanged",s.toString())
-                retrofitClient
-                    .getGifImage(s.toString())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe ({
-                        Log.d("AHJ", "onResponse : $it,")
-                        var mData = it.getAsJsonArray("data")
-                        var cnt = mData.size()-1
-                        val dd = mData.asJsonArray.get(0).asJsonObject.get("images").asJsonObject.get("original").asJsonObject.get("url")
-                        var array: ArrayList<String> = ArrayList()
-                        for (i in (0 until cnt)){
-                            array.add(mData.asJsonArray.get(i).asJsonObject.get("images").asJsonObject.get("original").asJsonObject.get("url").asString)
-                        }
-
-                        mSearchUiAdapter?.setData(array)
-//                        recycle.adapter?.notifyDataSetChanged()
-                    },{
-                        Log.d("AHJ", "error : $it,")
-                    })
-            }
-        })
-
-*/
     }
 
 }
