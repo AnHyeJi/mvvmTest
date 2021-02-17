@@ -21,7 +21,11 @@ class SearchRepository @Inject constructor() {
             val cnt = mData.size()-1
             val array: ArrayList<String> = ArrayList()
             for (i in (0 until cnt)){
-                array.add(mData.asJsonArray.get(i).asJsonObject.get("images").asJsonObject.get("original").asJsonObject.get("url").asString)
+                array.add(mData
+                        .asJsonArray.get(i)
+                        .asJsonObject.get("images")
+                        .asJsonObject.get("original")
+                        .asJsonObject.get("url").asString)
             }
             // 1번 방식 : 옵저버로 _searchData 값을 바라보고 _searchData 데이타 변경시 UI그림
 //                        viewModel.setData(array)

@@ -24,6 +24,8 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
     @Inject lateinit var searchAdapter: SearchUiAdapter
     @Inject @Named("dataInput") lateinit var txtData: String
 
+    @Inject @Named("dataInput") lateinit var txtData_test: String
+
     private val viewModel by viewModels<SearchViewModel> { factory }
 
     override val layout: Int
@@ -40,22 +42,6 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
         }
 
         viewModel.setSearchData("")
-        /*
-         *  //1번 방식
-         *         viewModel._searchData.observe(this, Observer<ArrayList<String>>{
-                if(it !=null){
-                Toast.makeText(this,""+it.toString(),Toast.LENGTH_LONG).show()
-                    mSearchUiAdapter = SearchUiAdapter(it)
-
-                    if(gridLayoutManager == null){
-                        val gridLayoutManager = GridLayoutManager(this, 2)
-                        recycle.layoutManager = gridLayoutManager
-                        recycle.adapter = mSearchUiAdapter
-                    }
-                }
-        })
-         */
-
 
         edit.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {}
@@ -63,6 +49,8 @@ class SearchActivity : BaseActivity<ActivitySearchBinding>() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 Log.d("addTextChanged",s.toString())
                 viewModel.setSearchData(s.toString())
+
+
             }
         })
     }
