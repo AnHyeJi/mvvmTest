@@ -13,7 +13,7 @@ class SearchRepository @Inject constructor() {
     private var _searchData: MutableLiveData<ArrayList<String>> = MutableLiveData()
 
     fun getApi(s: String): MutableLiveData<ArrayList<String>> {
-        //jenkins test 33333333
+        //jenkins test 4 ㅡㅡ
         RetrofitClient.getInstance()
         .getGifImage(s)
         .observeOn(AndroidSchedulers.mainThread())
