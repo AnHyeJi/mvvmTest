@@ -8,5 +8,6 @@ class MainApplication : DaggerApplication() {
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
         return DaggerApplicationComponent.factory().create(this)
+        //젠킨스 webhook 테스트 1
     }
 }
