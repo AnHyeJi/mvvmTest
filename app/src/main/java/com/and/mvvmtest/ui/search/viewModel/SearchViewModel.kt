@@ -25,6 +25,4 @@ class SearchViewModel @Inject constructor(
         repository.onCleared()
         super.onCleared()
     }
-// test
-
 }
