@@ -14,6 +14,7 @@ class SearchRepository @Inject constructor() {
 
     fun getApi(s: String): MutableLiveData<ArrayList<String>> {
         //jenkins test 555555555555555555555555555555555555
+        //jenkins test 555555555555555555555555555555555555
         RetrofitClient.getInstance()
         .getGifImage(s)
         .observeOn(AndroidSchedulers.mainThread())
